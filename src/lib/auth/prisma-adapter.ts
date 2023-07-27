@@ -114,7 +114,7 @@ export function PrismaAdapter(
     async updateUser(user) {
       const prismaUser = await prisma.user.update({
         where: {
-          id: user.id,
+          id: user.id!,
         },
         data: {
           name: user.name,
