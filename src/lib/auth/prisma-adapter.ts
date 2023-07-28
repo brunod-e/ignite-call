@@ -12,8 +12,11 @@ export function PrismaAdapter(
       const { "@ignitecall:userId": userIdOnCookies } = parseCookies({ req })
 
       if (!userIdOnCookies) {
-        throw new Error("User ID not found on cookies.")
+        throw new Error("User ID not found on cookies")
       }
+
+      console.log("AQUI")
+      console.log(userIdOnCookies)
 
       const prismaUser = await prisma.user.update({
         where: {
@@ -31,12 +34,12 @@ export function PrismaAdapter(
       })
 
       return {
-        id: prismaUser.id,
+        id: prismaUser?.id,
         name: prismaUser.name,
-        username: prismaUser.username,
+        avatar_url: prismaUser?.avatar_url!,
         email: prismaUser.email!,
+        username: prismaUser?.username,
         emailVerified: null,
-        avatar_url: prismaUser.avatar_url!,
       }
     },
 
