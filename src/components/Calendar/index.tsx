@@ -9,7 +9,17 @@ import {
 } from "./styles"
 import { getWeekDays } from "@/utils/get-week-days"
 import dayjs from "dayjs"
-import { useState } from "react"
+import { useMemo, useState } from "react"
+
+interface CalendarWeeksProps {
+  weekNumber: number
+  days: {
+    date: dayjs.Dayjs
+    disabled: boolean
+  }[]
+}
+
+type CalendarWeeks = CalendarWeeksProps[]
 
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(() => {
@@ -32,6 +42,60 @@ export function Calendar() {
 
   const currentMonth = currentDate.format("MMMM")
   const currentYear = currentDate.format("YYYY")
+
+  const calendarWeeks = useMemo(() => {
+    const daysInMonthArray = Array.from({
+      length: currentDate.daysInMonth(),
+    }).map((_, index) => {
+      return {
+        date: currentDate.set("date", index + 1),
+        disabled: false,
+      }
+    })
+
+    const firstWeekDay = currentDate.get("day")
+
+    const previousMonthFillArray = Array.from({ length: firstWeekDay }).map(
+      (_, index) => {
+        return {
+          date: currentDate.subtract(firstWeekDay - index, "day"),
+          disabled: true,
+        }
+      }
+    )
+
+    const lastDayInCurrentMonth = currentDate.set(
+      "date",
+      currentDate.daysInMonth()
+    )
+    const lastWeekDay = lastDayInCurrentMonth.get("day")
+
+    const nextMonthFillArray = Array.from({
+      length: 7 - (lastWeekDay + 1),
+    }).map((_, index) => {
+      return {
+        date: lastDayInCurrentMonth.add(index + 1, "day"),
+        disabled: true,
+      }
+    })
+
+    const calendarDays = [
+      ...previousMonthFillArray,
+      ...daysInMonthArray,
+      ...nextMonthFillArray,
+    ]
+
+    const calendarWeeks: CalendarWeeks = []
+
+    for (let i = 0; i < calendarDays.length; i += 7) {
+      calendarWeeks.push({
+        weekNumber: i / 7,
+        days: calendarDays.slice(i, i + 7),
+      })
+    }
+
+    return calendarWeeks
+  }, [currentDate])
 
   return (
     <CalendarContainer>
@@ -59,21 +123,21 @@ export function Calendar() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <CalendarDay>1</CalendarDay>
-            </td>
-            <td>
-              <CalendarDay>2</CalendarDay>
-            </td>
-            <td>
-              <CalendarDay>3</CalendarDay>
-            </td>
-          </tr>
+          {calendarWeeks.map(({ weekNumber, days }) => {
+            return (
+              <tr key={weekNumber}>
+                {days.map(({ date, disabled }) => {
+                  return (
+                    <td key={date.toString()}>
+                      <CalendarDay disabled={disabled}>
+                        {date.get("date")}
+                      </CalendarDay>
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
         </tbody>
       </CalendarBody>
     </CalendarContainer>
