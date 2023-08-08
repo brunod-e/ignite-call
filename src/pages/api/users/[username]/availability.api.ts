@@ -68,7 +68,6 @@ export default async function handle(
 
   const blockedTimes = await prisma.scheduling.findMany({
     select: {
-      user_id: true,
       date: true,
     },
     where: {
