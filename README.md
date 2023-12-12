@@ -18,7 +18,7 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/brunod-e/ignite-call?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/brunod-e/ignite-call?style=social) ![Issues](https://img.shields.io/github/issues/brunod-e/ignite-call) ![License](https://img.shields.io/github/license/brunod-e/ignite-call) 
+![Contributors](https://img.shields.io/github/contributors/brunod-e/ignite-call?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/brunod-e/ignite-call?style=social) ![Issues](https://img.shields.io/github/issues/brunod-e/ignite-call)
 
 ## Table Of Contents
 
