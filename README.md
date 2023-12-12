@@ -10,7 +10,7 @@
     Website to schedule and manage meetings through Google Meet
     <br/>
     <br/>
-    <a href="https://github.com/brunod-e/ignite-call">View Demo</a>
+    <a href="https://ignite-call-chi.vercel.app">View Demo</a>
     .
     <a href="https://github.com/brunod-e/ignite-call/issues">Report Bug</a>
     .
