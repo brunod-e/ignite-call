@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/brunod-e/ignite-call">
-    <img src="https://hotmart.s3.amazonaws.com/product_pictures/ec16822f-5482-421b-9c12-470cf1c099c8/Group6626.png" alt="Logo" width="80" height="80">
+    <img src="https://repository-images.githubusercontent.com/657816424/36e7f41d-c2f0-4069-b6b4-c6b2196f8708" alt="Logo" height="80">
   </a>
 
   <h3 align="center">Ignite Call</h3>
