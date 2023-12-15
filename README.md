@@ -102,10 +102,6 @@ At the first page, you will create your user and your schedule. After this, you 
 
 Now, send this link to someone who will be able to schedule a time to have a meeting with you
 
-## Roadmap
-
-See the [open issues](https://github.com/brunod-e/ignite-call/issues) for a list of proposed features (and known issues).
-
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
